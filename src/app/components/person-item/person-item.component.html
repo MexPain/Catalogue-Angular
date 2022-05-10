@@ -2,9 +2,9 @@
   <mat-card-title-group>
     <mat-card-title>{{person.name}}</mat-card-title>
     <img *ngIf="person.profile_path"
-         class="person-image" mat-card-image src="https://image.tmdb.org/t/p/w200{{person.profile_path}}" alt="No image" >
+         class="person-image" mat-card-image src="{{baseImgUrl}}/w200{{person.profile_path}}" alt="No image">
     <img *ngIf="!person.profile_path"
-         class="person-image" mat-card-image src="assets/not-found.png" alt="Not found" >
+         class="person-image" mat-card-image src="assets/not-found.png" alt="Not found">
   </mat-card-title-group>
   <mat-card-content>
     <p>Known from:</p>

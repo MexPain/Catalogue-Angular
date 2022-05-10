@@ -4,7 +4,8 @@
   <h5 *ngIf="!movies" class="placeholder-text">Nothing yet? Try searching for the names of the movies</h5>
   <mat-spinner *ngIf="isLoading" [diameter]="100" class="mx-auto" style="margin-top: 50px"></mat-spinner>
   <div *ngIf="movies" class="content col-12">
-    <div class="row subtitle">Search results:</div>
+    <div *ngIf="!movies.total_results" class="row subtitle">No results</div>
+    <div *ngIf="movies.total_results" class="row subtitle">Search results:</div>
     <mat-paginator [length]="movies.total_results"
                    [pageSize]="10"
                    [pageSizeOptions]="[5, 10, 20, 50]"

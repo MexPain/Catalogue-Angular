@@ -36,7 +36,7 @@
       </div>
       <div class="col-5">
         <img class="img-fluid" *ngIf="season.poster_path"
-             src="https://image.tmdb.org/t/p/w500{{season.poster_path}}" alt="No poster">
+             src="{{baseImgUrl}}/w500{{season.poster_path}}" alt="No poster">
       </div>
     </div>
   </div>

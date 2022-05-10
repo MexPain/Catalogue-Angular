@@ -4,7 +4,8 @@
   <h5 *ngIf="!people" class="placeholder-text">Nothing yet? Try searching for names of people</h5>
   <mat-spinner *ngIf="isLoading" [diameter]="100" class="mx-auto" style="margin-top: 50px"></mat-spinner>
   <div *ngIf="people" class="content col-12">
-    <div class="row subtitle">Search results:</div>
+    <div *ngIf="!people.total_results" class="row subtitle">No results</div>
+    <div *ngIf="people.total_results" class="row subtitle">Search results:</div>
     <mat-paginator [length]="people.total_results"
                    [pageSize]="10"
                    [pageSizeOptions]="[5, 10, 20, 50]"

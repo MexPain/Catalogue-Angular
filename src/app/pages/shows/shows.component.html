@@ -4,7 +4,8 @@
   <h5 *ngIf="!shows" class="placeholder-text">Nothing yet? Try searching for the names of the series</h5>
   <mat-spinner *ngIf="isLoading" [diameter]="100" class="mx-auto" style="margin-top: 50px"></mat-spinner>
   <div *ngIf="shows" class="content col-12">
-    <div class="row subtitle">Search results:</div>
+    <div *ngIf="!shows.total_results" class="row subtitle">No results</div>
+    <div *ngIf="shows.total_results" class="row subtitle">Search results:</div>
     <mat-paginator [length]="shows.total_results"
                    [pageSize]="10"
                    [pageSizeOptions]="[5, 10, 20, 50]"

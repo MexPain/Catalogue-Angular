@@ -2,10 +2,11 @@
   <mat-form-field appearance="outline" class="form-field">
     <mat-label>Find {{typeLabel}}...</mat-label>
     <input matInput
-           name="searchField"
-           [(ngModel)]="searchText"
+           [formControl]="searchText"
+           required
     >
+    <mat-error *ngIf="searchText.invalid">{{getErrorMessage()}}</mat-error>
   </mat-form-field>
-  <button mat-raised-button color="primary">Search</button>
+  <button mat-raised-button [disabled]="!searchText.valid" color="primary">Search</button>
 </form>
 

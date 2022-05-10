@@ -3,6 +3,7 @@ import {Subscription} from "rxjs";
 import {ActivatedRoute, Params} from "@angular/router";
 import {ShowService} from "../../../services/show.service";
 import {SeasonDetails} from "../../../../models/SeasonDetails";
+import {environment as env} from "../../../../environments/environment";
 
 @Component({
   selector: 'app-show-season-details',
@@ -14,6 +15,8 @@ export class ShowSeasonDetailsComponent implements OnInit, OnDestroy {
   seasonSub!: Subscription
 
   season!: SeasonDetails
+
+  baseImgUrl = env.IMAGE_BASE_URL
 
   exPanelStep = 1;
 
