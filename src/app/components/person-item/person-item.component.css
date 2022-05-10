@@ -1,0 +1,9 @@
+.person-card {
+  margin: 1rem;
+}
+
+.person-image {
+  max-width: 125px;
+  max-height: 200px;
+  margin: 0 0.5rem 0.5rem 2rem;
+}

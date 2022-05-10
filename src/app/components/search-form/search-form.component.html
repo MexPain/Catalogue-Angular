@@ -1,0 +1,11 @@
+<form (ngSubmit)="onSubmit()" class="search-form">
+  <mat-form-field appearance="outline" class="form-field">
+    <mat-label>Find {{typeLabel}}...</mat-label>
+    <input matInput
+           name="searchField"
+           [(ngModel)]="searchText"
+    >
+  </mat-form-field>
+  <button mat-raised-button color="primary">Search</button>
+</form>
+

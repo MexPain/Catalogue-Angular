@@ -1,0 +1,14 @@
+<div class="row" *ngIf="recommendedMovies">
+  <div class="col-xxl-4 col-lg-6 col-sm-12 item-card" *ngFor="let movie of recommendedMovies">
+    <app-movie-item
+      [movie]="movie"
+    ></app-movie-item>
+  </div>
+</div>
+<div class="row" *ngIf="recommendedShows">
+  <div class="col-xxl-4 col-lg-6 col-sm-12 item-card" *ngFor="let product of recommendedShows">
+    <app-show-item
+      [show]="product"
+    ></app-show-item>
+  </div>
+</div>

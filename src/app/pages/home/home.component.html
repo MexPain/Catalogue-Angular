@@ -1,0 +1,67 @@
+<div class="heading">
+  <img src="assets/snip.png" alt="Wallpaper" style="width:100%;">
+  <div class="heading-text">
+    <h1>Catalogue</h1>
+    <p>The largest cinema related database in the world</p>
+  </div>
+</div>
+
+<div class="container-fluid mat-typography">
+  <div *ngIf="movies" class="content">
+    <h1 class="row subtitle">Trending movies:</h1>
+    <div class="row options">
+      <mat-form-field appearance="outline" class="col-md-4 options-field mx-auto">
+        <mat-label>Select the time period</mat-label>
+        <mat-select [(value)]="selectedMovieTimeWindow" (selectionChange)="movieTimeWindowChanged()">
+          <mat-option value="day">Day</mat-option>
+          <mat-option value="week">Week</mat-option>
+        </mat-select>
+      </mat-form-field>
+      <mat-paginator [length]="movies.total_results"
+                     [pageSize]="5"
+                     [pageSizeOptions]="[5, 10, 20]"
+                     (page)="onMoviesPageEvent($event)"
+                     aria-label="Select page"
+                     class="col-md-8"
+      >
+      </mat-paginator>
+    </div>
+
+    <div class="row" *ngIf="filteredMovieList">
+      <div class="col-xxl-4 col-lg-6 col-sm-12 item-card" *ngFor="let movie of filteredMovieList">
+        <app-movie-item
+          [movie]="movie"
+          [filteredGenreNames]="findGenreNames(movie.genre_ids, allMovieGenres)"
+        ></app-movie-item>
+      </div>
+    </div>
+  </div>
+
+  <div *ngIf="shows" class="content col-12">
+    <h1 class="row subtitle">Trending shows:</h1>
+    <div class="row options">
+      <mat-form-field appearance="outline" class="col-md-4 options-field mx-auto">
+        <mat-label>Select the time period</mat-label>
+        <mat-select [(value)]="selectedShowTimeWindow" (selectionChange)="showTimeWindowChanged()">
+          <mat-option value="day">Day</mat-option>
+          <mat-option value="week">Week</mat-option>
+        </mat-select>
+      </mat-form-field>
+      <mat-paginator [length]="shows.total_results"
+                     [pageSize]="5"
+                     [pageSizeOptions]="[5, 10, 20]"
+                     (page)="onShowsPageEvent($event)"
+                     class="col-md-8"
+                     aria-label="Select page">
+      </mat-paginator>
+    </div>
+    <div class="row" *ngIf="filteredShowList">
+      <div class="col-xxl-4 col-lg-6 col-sm-12 item-card" *ngFor="let show of filteredShowList">
+        <app-show-item
+          [show]="show"
+          [filteredGenreNames]="findGenreNames(show.genre_ids, allShowGenres)"
+        ></app-show-item>
+      </div>
+    </div>
+  </div>
+</div>

@@ -1,0 +1,45 @@
+.genre-container {
+  margin-bottom: 0.7rem;
+}
+
+.genre {
+  margin-left: 0.4rem;
+  margin-right: 0.7rem;
+}
+
+.actor-image {
+  max-width: 140px;
+  max-height: 200px;
+  margin: 0.5rem;
+}
+
+.actor-card {
+  margin-top: 1rem;
+  margin-bottom: 1rem;
+}
+
+.content {
+  margin-top: 2rem;
+  margin-bottom: 2rem;
+  box-shadow: 0 4px 8px 0 rgba(0,0,0,0.2);
+  transition: 0.3s;
+  padding: 1rem;
+  font-size: medium;
+}
+
+h1 {
+  font-size: 35px;
+}
+
+.header {
+  margin: 1rem;
+  text-align: center;
+}
+
+.bolded {
+  font-weight: bold;
+}
+
+p {
+  margin-bottom: 1.5rem;
+}

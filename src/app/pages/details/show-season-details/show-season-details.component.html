@@ -1,0 +1,43 @@
+<div *ngIf="season" class="container mat-typography">
+  <div class="content">
+    <div class="col-12 header">
+      <h1>{{season.name}}</h1>
+    </div>
+    <div class="row" style="margin-top: 3rem">
+      <div class="col-7">
+        <p style="margin-bottom: 0; font-weight: bold">Overview: </p>
+        <p *ngIf="season.overview" style="margin-left: 0.5rem">{{season.overview}}</p>
+        <p *ngIf="!season.overview" style="margin-left: 0.5rem">-</p>
+
+        <mat-accordion *ngFor="let episode of season.episodes">
+
+          <mat-expansion-panel *ngIf="episode && episode.episode_number" [expanded]="exPanelStep === episode.episode_number" (opened)="setStep(episode.episode_number)">
+            <mat-expansion-panel-header>
+              <mat-panel-title>
+                Episode {{episode.episode_number}}: {{episode.name}}
+              </mat-panel-title>
+              <mat-panel-description>
+                Air date: {{episode.air_date}}
+              </mat-panel-description>
+            </mat-expansion-panel-header>
+
+            <p style="margin-bottom: 0; font-weight: bold">Overview: </p>
+            <p style="margin-left: 0.5rem">{{episode.overview}}</p>
+
+            <mat-action-row>
+              <button *ngIf="episode.episode_number > 1" mat-button color="warn" (click)="prevStep()">Previous</button>
+              <button *ngIf="season.episodes && episode.episode_number < season.episodes.length" mat-button color="primary" (click)="nextStep()">Next</button>
+            </mat-action-row>
+          </mat-expansion-panel>
+
+        </mat-accordion>
+
+
+      </div>
+      <div class="col-5">
+        <img class="img-fluid" *ngIf="season.poster_path"
+             src="https://image.tmdb.org/t/p/w500{{season.poster_path}}" alt="No poster">
+      </div>
+    </div>
+  </div>
+</div>

@@ -1,0 +1,26 @@
+<mat-card *ngIf="movie" class="mat-typography movie-card">
+  <mat-card-title-group>
+    <mat-card-title>{{movie.original_title}} ({{releaseYear}})</mat-card-title>
+    <mat-card-subtitle>
+      <p>{{movie.vote_average}} &#11088;</p>
+      <ul>
+        <li *ngFor="let name of filteredGenreNames">{{name}}</li>
+      </ul>
+    </mat-card-subtitle>
+    <img *ngIf="movie.poster_path"
+      class="movie-image" mat-card-image src="https://image.tmdb.org/t/p/w200{{movie.poster_path}}" alt="{{movie.title}}" >
+    <img *ngIf="!movie.poster_path"
+         class="movie-image" mat-card-image src="assets/not-found.png" alt="Not found" >
+  </mat-card-title-group>
+  <mat-card-content>
+    <p *ngIf="movie.overview && movie.overview.length < 200">{{movie.overview}}</p>
+    <p *ngIf="movie.overview && movie.overview.length >= 200">{{movie.overview.substring(0, 200)}}...</p>
+  </mat-card-content>
+  <mat-card-actions align="end">
+    <a [routerLink]="'/movies/'+movie.id"
+       mat-stroked-button
+       color="accent"
+    >Show more
+    </a>
+  </mat-card-actions>
+</mat-card>

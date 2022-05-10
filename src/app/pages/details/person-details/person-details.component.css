@@ -1,0 +1,32 @@
+.item-info {
+  margin: 0.5rem;
+}
+
+.row-main {
+  margin-top: 2rem;
+  margin-bottom: 2rem;
+  box-shadow: 0 4px 8px 0 rgba(0,0,0,0.2);
+  transition: 0.3s;
+}
+
+img {
+  border-radius: 5px 5px 0 0;
+  margin: 0.5rem;
+}
+
+.bolded {
+  font-weight: bold;
+}
+
+h1 {
+  font-size: 30px;
+}
+
+.main-info {
+  font-size: medium;
+}
+
+.divider {
+  margin-bottom: 0.5rem;
+  margin-top: 0.5rem;
+}

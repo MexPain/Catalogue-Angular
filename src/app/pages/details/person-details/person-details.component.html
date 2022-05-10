@@ -1,0 +1,64 @@
+<div class="container mat-typography" *ngIf="person">
+  <div class="row row-main">
+    <div class="item-img col-5">
+      <img class="img-fluid" *ngIf="person.profile_path" src="{{baseImgUrl}}{{person.profile_path}}" alt="No image">
+    </div>
+    <div class="col-7">
+      <div class="item-info">
+        <h1 *ngIf="person.name">{{person.name}}</h1>
+        <p class="main-info" *ngIf="person.gender"><span class="bolded">Gender:</span> {{getGender()}}</p>
+        <p class="main-info" *ngIf="person.birthday"><span class="bolded">Birthday:</span> {{person.birthday}}</p>
+        <p class="main-info" *ngIf="person.place_of_birth"><span class="bolded">Birthplace:</span> {{person.place_of_birth}}</p>
+        <p class="main-info" *ngIf="person.deathday"><span class="bolded">Death date:</span> {{getDeathdate()}}</p>
+        <p class="main-info" style="margin-bottom: 0; font-weight: bold">Bio:</p>
+        <p style="margin-left: 0.4rem" *ngIf="person.biography">{{person.biography}}</p>
+        <div *ngIf="person.homepage">
+          <span class="bolded">Homepage: </span>
+          <a href="{{person.homepage}}">{{person.homepage}}</a>
+        </div>
+      </div>
+    </div>
+  </div>
+  <div class="row row-main main-info">
+    <div class="col-6">
+      <p style="margin: 1rem" class="bolded">Largest roles:</p>
+      <div style="margin-left: 1.5rem" *ngFor="let product of mainCast">
+        <div *ngIf="product.media_type === 'movie'">
+          <span>{{product.character}} in </span>
+          <a [routerLink]="'/movies/'+product.id">{{product.title}}</a>
+        </div>
+        <div *ngIf="product.media_type === 'tv'">
+          <span>{{product.character}} in </span>
+          <a [routerLink]="'/tv/'+product.id">{{product.name}}</a>
+        </div>
+        <mat-divider class="divider"></mat-divider>
+      </div>
+      <mat-paginator [length]="castLength"
+                     [pageSize]="10"
+                     [pageSizeOptions]="[5, 10, 20, 50]"
+                     (page)="setCastPageEvent($event)"
+                     aria-label="Select page">
+      </mat-paginator>
+    </div>
+    <div class="col-6">
+      <p style="margin: 1rem" class="bolded main-info">Assisted in:</p>
+      <div style="margin-left: 1.5rem" *ngFor="let product of mainCrew">
+        <div *ngIf="product.media_type === 'movie'">
+          <a [routerLink]="'/movies/'+product.id">{{product.title}}</a>
+          <span> as {{product.job}}</span>
+        </div>
+        <div *ngIf="product.media_type === 'tv'">
+          <a [routerLink]="'/tv/'+product.id">{{product.name}}</a>
+          <span> as {{product.job}}</span>
+        </div>
+        <mat-divider class="divider"></mat-divider>
+      </div>
+      <mat-paginator [length]="crewLength"
+                     [pageSize]="10"
+                     [pageSizeOptions]="[5, 10, 20, 50]"
+                     (page)="setCrewPageEvent($event)"
+                     aria-label="Select page">
+      </mat-paginator>
+    </div>
+  </div>
+</div>

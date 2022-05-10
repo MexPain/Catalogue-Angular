@@ -1,0 +1,21 @@
+.movie-card {
+  margin: 1rem;
+}
+
+.movie-image {
+  /*display: block;*/
+  max-width: 200px;
+  max-height: 300px;
+  margin: 0 0.5rem 0.5rem 2rem;
+}
+
+ul {
+  list-style-type: none;
+  margin: 0;
+  padding: 0;
+}
+li {
+  display: inline-block;
+  margin-right: 1rem;
+  font-weight: bold;
+}

@@ -1,0 +1,26 @@
+.placeholder-text {
+  text-align: center;
+  margin-top: 1rem;
+}
+
+.content {
+  margin-top: 2rem;
+  margin-bottom: 2rem;
+  box-shadow: 0 4px 8px 0 rgba(0,0,0,0.2);
+  transition: 0.3s;
+  padding: 1rem;
+  font-size: medium;
+}
+
+.item-card {
+  margin-top: 1rem;
+  margin-bottom: 1rem;
+  align-items: center;
+}
+
+.subtitle {
+  font-size: medium;
+  margin-left: 1rem;
+  font-weight: bold;
+  margin-top: 3rem;
+}

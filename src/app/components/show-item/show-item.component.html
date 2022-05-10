@@ -1,0 +1,26 @@
+<mat-card *ngIf="show" class="mat-typography show-card">
+  <mat-card-title-group>
+    <mat-card-title>{{show.name}}</mat-card-title>
+    <mat-card-subtitle>
+      <p>{{show.vote_average}} &#11088;</p>
+      <ul>
+        <li *ngFor="let name of filteredGenreNames">{{name}}</li>
+      </ul>
+    </mat-card-subtitle>
+    <img *ngIf="show.poster_path"
+         class="show-image" mat-card-image src="{{baseImgUrl}}{{show.poster_path}}" alt="No image" >
+    <img *ngIf="!show.poster_path"
+         class="show-image" mat-card-image src="assets/not-found.png" alt="Not found" >
+  </mat-card-title-group>
+  <mat-card-content>
+    <p *ngIf="show.overview && show.overview.length < 200">{{show.overview}}</p>
+    <p *ngIf="show.overview && show.overview.length >= 200">{{show.overview.substring(0, 200)}}...</p>
+  </mat-card-content>
+  <mat-card-actions align="end">
+    <a [routerLink]="'/shows/'+show.id"
+       mat-stroked-button
+       color="accent"
+    >Show more
+    </a>
+  </mat-card-actions>
+</mat-card>

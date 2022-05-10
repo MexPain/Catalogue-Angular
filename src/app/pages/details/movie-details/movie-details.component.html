@@ -1,0 +1,80 @@
+<div *ngIf="movie" class="container mat-typography">
+  <div class="content">
+    <div class="col-12 header">
+      <h1>{{movie.original_title}}</h1>
+    </div>
+    <div *ngIf="movie.tagline" class="col-12 header">
+      <h3>{{movie.tagline}}</h3>
+    </div>
+    <div class="row" style="margin-top: 3rem">
+      <div class="col-md-7">
+        <p><span class="bolded">Release date: </span>{{movie.release_date}}</p>
+        <p><span class="bolded">Directed by: </span>
+          <span *ngFor="let dir of directors">{{dir.name}} </span>
+        </p>
+        <p><span class="bolded">Runtime:</span> {{movie.runtime}} minutes</p>
+        <div class="genre-container" style="margin-bottom: 1.5rem">
+          <span class="bolded">Genres: </span>
+          <span class="genre" *ngFor="let genre of movie.genres">{{genre.name}}</span>
+        </div>
+        <p *ngIf="movie.budget && movie.budget !== 0"><span class="bolded">Budget: </span>{{movie.budget}} $</p>
+        <p *ngIf="!movie.budget"><span class="bolded">Budget: </span> -</p>
+        <p *ngIf="movie.revenue && movie.revenue !== 0"><span class="bolded">Revenue: </span> {{movie.revenue}} $</p>
+        <p *ngIf="!movie.revenue"><span class="bolded">Revenue: </span> -</p>
+        <p><span class="bolded">Votes: </span>{{movie.vote_average}}/10 - from {{movie.vote_count}} votes</p>
+        <p *ngIf="movie.homepage">
+          <span class="bolded">Homepage: </span>
+          <a href="{{movie.homepage}}">{{movie.homepage}}</a>
+        </p>
+        <p style="margin-bottom: 0; font-weight: bold">Overview: </p>
+        <p style="margin-left: 0.5rem">{{movie.overview}}</p>
+      </div>
+      <div class="col-md-5">
+        <img class="img-fluid" *ngIf="movie.poster_path"
+             src="{{baseImgUrl}}{{movie.poster_path}}" alt="No image">
+      </div>
+    </div>
+    <p class="row bolded" style="margin-top: 1.5rem">Cast:</p>
+    <mat-paginator [length]="castLength"
+                   [pageSize]="10"
+                   [pageSizeOptions]="[5, 10, 20, 50]"
+                   (page)="onCastPageEvent($event)"
+                   aria-label="Select page">
+    </mat-paginator>
+    <div class="row">
+
+      <div class="col-sm-6 col-md-4 col-xl-3 actor-card" *ngFor="let actor of filteredCast">
+        <mat-card>
+          <mat-card-header style="text-align: center; justify-content: center">
+            <mat-card-title>
+              <a [routerLink]="'/people/'+actor.id">{{actor.name}}</a>
+            </mat-card-title>
+          </mat-card-header>
+          <img *ngIf="actor.profile_path" class="actor-image img-fluid rounded mx-auto" mat-card-image src="https://image.tmdb.org/t/p/w200{{actor.profile_path}}" alt="No photo">
+          <img *ngIf="!actor.profile_path" class="actor-image img-fluid mx-auto" mat-card-image src="assets/not-found.png" alt="No photo">
+          <mat-card-content style="text-align: center; justify-content: center">
+            <p>as {{actor.character}}</p>
+          </mat-card-content>
+          <mat-card-actions align="end">
+            <a [routerLink]="'/people/'+actor.id"
+               mat-stroked-button
+               color="accent"
+            >Show more
+            </a>
+          </mat-card-actions>
+        </mat-card>
+      </div>
+
+    </div>
+  </div>
+  <div class="content" *ngIf="movie.id">
+    <div style="font-size: medium; margin-left: 1rem; font-weight: bold">
+      Also check out these:</div>
+    <app-recommendations
+      [id]="movie.id"
+      [mediaType]="'movie'"
+      [amount]="6"
+    ></app-recommendations>
+  </div>
+</div>
+

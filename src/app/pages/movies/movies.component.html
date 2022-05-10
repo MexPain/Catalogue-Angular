@@ -1,0 +1,27 @@
+<app-search-form [typeLabel]="'movies'" (onSearch)="searchMovies($event)"></app-search-form>
+
+<div class="container-fluid mat-typography">
+  <h5 *ngIf="!movies" class="placeholder-text">Nothing yet? Try searching for the names of the movies</h5>
+  <mat-spinner *ngIf="isLoading" [diameter]="100" class="mx-auto" style="margin-top: 50px"></mat-spinner>
+  <div *ngIf="movies" class="content col-12">
+    <div class="row subtitle">Search results:</div>
+    <mat-paginator [length]="movies.total_results"
+                   [pageSize]="10"
+                   [pageSizeOptions]="[5, 10, 20, 50]"
+                   (page)="onPageEvent($event)"
+                   aria-label="Select page">
+    </mat-paginator>
+
+    <div class="row" *ngIf="filteredMovieList">
+      <div class="col-xxl-4 col-lg-6 col-sm-12 item-card" *ngFor="let movie of filteredMovieList">
+        <app-movie-item
+          [movie]="movie"
+          [filteredGenreNames]="findGenreNames(movie.genre_ids)"
+        ></app-movie-item>
+      </div>
+    </div>
+  </div>
+</div>
+
+
+

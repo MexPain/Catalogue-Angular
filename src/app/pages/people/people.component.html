@@ -1,0 +1,24 @@
+<app-search-form [typeLabel]="'people'" (onSearch)="searchPeople($event)"></app-search-form>
+
+<div class="container-fluid mat-typography">
+  <h5 *ngIf="!people" class="placeholder-text">Nothing yet? Try searching for names of people</h5>
+  <mat-spinner *ngIf="isLoading" [diameter]="100" class="mx-auto" style="margin-top: 50px"></mat-spinner>
+  <div *ngIf="people" class="content col-12">
+    <div class="row subtitle">Search results:</div>
+    <mat-paginator [length]="people.total_results"
+                   [pageSize]="10"
+                   [pageSizeOptions]="[5, 10, 20, 50]"
+                   (page)="onPageEvent($event)"
+                   aria-label="Select page">
+    </mat-paginator>
+
+    <div class="row" *ngIf="filteredPeopleList">
+      <div class="col-sm-12 col-md-6 col-lg-4 col-xxl-3 item-card" *ngFor="let person of filteredPeopleList">
+        <app-person-item
+          [person]="person"
+        ></app-person-item>
+      </div>
+    </div>
+  </div>
+</div>
+

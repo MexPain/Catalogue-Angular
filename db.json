@@ -1,0 +1,155 @@
+{
+  "movies": [
+    {
+      "id": 1,
+      "original_title": "Shrek",
+      "release_date": "1999-10-12",
+      "tagline": "Lord farquaad",
+      "vote_average": 7.5,
+      "overview": "This is the part where you run away!",
+      "genres": [
+        {
+          "id": 18,
+          "name": "Drama"
+        },
+        {
+          "id": 10,
+          "name": "Action"
+        },
+        {
+          "id": 19,
+          "name": "Fantasy"
+        }
+      ],
+      "budget": 234000
+    },
+    {
+      "id": 2,
+      "original_title": "Harry Potter and the chamber of secrets",
+      "release_date": "2002-10-12",
+      "tagline": "Far far away",
+      "vote_average": 8.5,
+      "overview": "You're a wizard, Harry!",
+      "genres": [
+        {
+          "id": 18,
+          "name": "Drama"
+        }
+      ],
+      "budget": 564000
+    },
+    {
+      "id": 3,
+      "original_title": "Dark Knight",
+      "release_date": "2005-12-12",
+      "tagline": "Everyone needs a little chaos",
+      "vote_average": 7.5,
+      "overview": "The FormControl instance tracks the value, user interaction, and validation status of the control and keeps the view synced with the model. If used within a parent form, the directive also registers itself with the form as a child control.\n\nThis directive is used by itself or as part of a larger form. Use the ngModel selector to activate it.\n\nIt accepts a domain model as an optional Input. If you have a one-way binding to ngModel with [] syntax, changing the domain model's value in the component class sets the value in the view. If you have a two-way binding with [()] syntax (also known as 'banana-in-a-box syntax'), the value in the UI always syncs back to the domain model in your class.",
+      "genres": [
+        {
+          "id": 10,
+          "name": "Action"
+        },
+        {
+          "id": 5,
+          "name": "Adventure"
+        }
+      ],
+      "budget": 2324000
+    }
+  ],
+  "shows": [
+    {
+      "id": 1,
+      "genres": [
+        {
+          "id": 18,
+          "name": "Drama"
+        }
+      ],
+      "tagline": "Winter is coming",
+      "vote_average": 8.5,
+      "seasons": [
+        {
+          "air_date": "2010-12-05",
+          "episode_count": 64,
+          "id": 3627,
+          "name": "Specials",
+          "overview": "",
+          "poster_path": "/kMTcwNRfFKCZ0O2OaBZS0nZ2AIe.jpg",
+          "season_number": 0
+        },
+        {
+          "air_date": "2011-04-17",
+          "episode_count": 10,
+          "id": 3624,
+          "name": "Season 1",
+          "overview": "Trouble is brewing in the Seven Kingdoms of Westeros. For the driven inhabitants of this visionary world, control of Westeros' Iron Throne holds the lure of great power. But in a land where the seasons can last a lifetime, winter is coming...and beyond the Great Wall that protects them, an ancient evil has returned. In Season One, the story centers on three primary areas: the Stark and the Lannister families, whose designs on controlling the throne threaten a tenuous peace; the dragon princess Daenerys, heir to the former dynasty, who waits just over the Narrow Sea with her malevolent brother Viserys; and the Great Wall--a massive barrier of ice where a forgotten danger is stirring.",
+          "poster_path": "/zwaj4egrhnXOBIit1tyb4Sbt3KP.jpg",
+          "season_number": 1
+        }
+      ],
+      "overview": "en noble families fight for control of the mythical land of Westeros. Fri",
+      "original_name": "Game of Thrones"
+    },
+    {
+      "id": 2,
+      "genres": [
+        {
+          "id": 4,
+          "name": "Comedy"
+        }
+      ],
+      "tagline": "Bird is the word",
+      "vote_average": 6.5,
+      "seasons": [
+        {
+          "air_date": "2010-12-05",
+          "episode_count": 20,
+          "id": 3627,
+          "name": "Specials",
+          "overview": "",
+          "poster_path": "/kMTcwNRfFKCZ0O2OaBZS0nZ2AIe.jpg",
+          "season_number": 0
+        },
+        {
+          "air_date": "2011-04-17",
+          "episode_count": 10,
+          "id": 3624,
+          "name": "Season 1",
+          "overview": "Trouble is brewing in the Seven Kingdoms of Westeros. For the driven inhabitants of this visionary world, control of Westeros' Iron Throne holds the lure of great power. But in a land where the seasons can last a lifetime, winter is coming...and beyond the Great Wall that protects them, an ancient evil has returned. In Season One, the story centers on three primary areas: the Stark and the Lannister families, whose designs on controlling the throne threaten a tenuous peace; the dragon princess Daenerys, heir to the former dynasty, who waits just over the Narrow Sea with her malevolent brother Viserys; and the Great Wall--a massive barrier of ice where a forgotten danger is stirring.",
+          "poster_path": "/zwaj4egrhnXOBIit1tyb4Sbt3KP.jpg",
+          "season_number": 1
+        }
+      ],
+      "overview": "Just random shiet epizodes about a random family",
+      "original_name": "Family Guy"
+    }
+  ],
+  "people": [
+    {
+      "id": 1,
+      "birthday": "1963-12-18",
+      "name": "Brad Pitt",
+      "gender": 1,
+      "place_of_birth": "Shawnee, Oklahoma, USA",
+      "biography": "is an American actor and film produc"
+    },
+    {
+      "id": 2,
+      "birthday": "2000-12-18",
+      "name": "Harrizon Ford",
+      "gender": 1,
+      "place_of_birth": "Los Angeles, Texas, USA",
+      "biography": "is an Han SDolo played in Sta"
+    },
+    {
+      "id": 3,
+      "birthday": "1945-12-18",
+      "name": "Gery Oldman",
+      "gender": 1,
+      "place_of_birth": "London, England",
+      "biography": "is antor and film produc"
+    }
+  ]
+}
