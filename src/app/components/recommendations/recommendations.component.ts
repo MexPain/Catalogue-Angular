@@ -5,6 +5,9 @@ import {MovieResult} from "../../../models/MovieSearch";
 import {ShowResult} from "../../../models/ShowSerach";
 import {Subscription} from "rxjs";
 
+/**
+ * A collection of card-views about movies or tv shows which are similar to a given movie or tv show
+ */
 @Component({
   selector: 'app-recommendations',
   templateUrl: './recommendations.component.html',
@@ -12,8 +15,17 @@ import {Subscription} from "rxjs";
 })
 export class RecommendationsComponent implements OnInit, OnDestroy, OnChanges {
 
+  /**
+   * Specifies if the given item is a movie or a tv show
+   */
   @Input() mediaType!: "movie" | "tv"
+  /**
+   * The id of the movie or show we want to find recommendations for
+   */
   @Input() id!: number
+  /**
+   * The number of appearing items
+   */
   @Input() amount!: number
 
   recommendedMovies!: MovieResult[] | undefined

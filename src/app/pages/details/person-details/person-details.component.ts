@@ -7,6 +7,9 @@ import {environment as env} from "../../../../environments/environment";
 import {Cast, Crew, PersonCredits} from "../../../../models/PersonCredits";
 import {PageEvent} from "@angular/material/paginator";
 
+/**
+ * A detailed view about a person.
+ */
 @Component({
   selector: 'app-person-details',
   templateUrl: './person-details.component.html',
@@ -39,10 +42,18 @@ export class PersonDetailsComponent implements OnInit, OnDestroy {
     this.getPersonCredits(this.personId)
   }
 
+  /**
+   * Called when the state of the cast list paginator changes
+   * @param event contains information about the state of the paginator
+   */
   setCastPageEvent(event: PageEvent) {
     this.getMainCast(event.pageIndex, event.pageSize)
   }
 
+  /**
+   * Called when the state of the crew list paginator changes
+   * @param event contains information about the state of the paginator
+   */
   setCrewPageEvent(event: PageEvent) {
     this.getMainCrew(event.pageIndex, event.pageSize)
   }

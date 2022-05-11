@@ -1,13 +1,22 @@
 import {Component, EventEmitter, Input, OnInit, Output} from '@angular/core';
 import {FormControl, Validators} from "@angular/forms";
 
+/**
+ * A form with a search field and a button
+ */
 @Component({
   selector: 'app-search-form',
   templateUrl: './search-form.component.html',
   styleUrls: ['./search-form.component.css']
 })
 export class SearchFormComponent implements OnInit {
+  /**
+   * An event which gives back the text from the search field when the button is pressed
+   */
   @Output() onSearch: EventEmitter<string> = new EventEmitter<string>()
+  /**
+   * A text about the item we're searching for. It will appear in the label of the text-field
+   */
   @Input() typeLabel!: string
 
   searchText = new FormControl('', [Validators.required, Validators.minLength(3)])

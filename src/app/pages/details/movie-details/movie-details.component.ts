@@ -7,6 +7,9 @@ import { environment as env} from "../../../../environments/environment";
 import {Cast, Credits} from "../../../../models/Credits";
 import {PageEvent} from "@angular/material/paginator";
 
+/**
+ * A detailed view about a movie. It also shows the cast members and some recommended movies
+ */
 @Component({
   selector: 'app-movie-details',
   templateUrl: './movie-details.component.html',
@@ -37,17 +40,21 @@ export class MovieDetailsComponent implements OnInit, OnDestroy {
     })
   }
 
-  getMovieDetails(id: string) {
+  private getMovieDetails(id: string) {
     this.movieSub = this.movieService.getMovie(id).subscribe((movieResp) => {
       this.movie = movieResp
     })
   }
 
+  /**
+   * Called when the state of the cast members' paginator changes
+   * @param event contains information about the state of the paginator
+   */
   onCastPageEvent(event: PageEvent) {
     this.filterMainCast(event.pageIndex, event.pageSize)
   }
 
-  getCredits(id: string) {
+  private getCredits(id: string) {
     this.creditsSub = this.movieService.getMovieCredits(id).subscribe( (creditsResp) => {
       this.credits = creditsResp
       this.castLength = creditsResp.cast ? creditsResp.cast.length : 0

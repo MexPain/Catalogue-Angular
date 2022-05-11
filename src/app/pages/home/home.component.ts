@@ -7,6 +7,10 @@ import {ShowResult, ShowSearchResult} from "../../../models/ShowSerach";
 import {ShowService} from "../../services/show.service";
 import {Genre} from "../../../models/Genres";
 
+/**
+ * The home page of the website. It contains recommendations of different
+ * movies and tv shows with pagination
+ */
 @Component({
   selector: 'app-home',
   templateUrl: './home.component.html',
@@ -48,6 +52,13 @@ export class HomeComponent implements OnInit, OnDestroy {
     this.refreshShows(this.currentShowPageIdx, this.currentShowPageSize)
   }
 
+  /**
+   * Returns the names of the provided genres' ids. Its required,
+   * because responses not always contain the name of
+   * the different genres, only the ids of them
+   * @param ids The ids of the genres we are looking for
+   * @param allGenres All the genres with ids and names of that media type
+   */
   findGenreNames(ids: number[] | undefined, allGenres: Genre[] | undefined): string[] {
     let filtered: string[] = []
     if (ids) {
@@ -62,18 +73,32 @@ export class HomeComponent implements OnInit, OnDestroy {
     return filtered
   }
 
+  /**
+   * Called when the state of the trending movies paginator changes
+   * @param event contains information about the state of the paginator
+   */
   onMoviesPageEvent(event: PageEvent) {
     this.currentMoviePageIdx = event.pageIndex
     this.currentMoviePageSize = event.pageSize
     this.refreshMovies(event.pageIndex, event.pageSize)
   }
 
+  /**
+   * Called when the state of the trending shows paginator changes
+   * @param event contains information about the state of the paginator
+   */
   onShowsPageEvent(event: PageEvent) {
     this.currentShowPageIdx = event.pageIndex
     this.currentShowPageSize = event.pageSize
     this.refreshShows(event.pageIndex, event.pageSize)
   }
 
+  /**
+   * Downloads, filters and refreshes the shown trending movies list depending on the given values
+   * @param idx The index of which page we are currently on
+   * @param size The amount of movies shown in the page
+   * @private
+   */
   private refreshMovies(idx: number, size: number) {
     let page = ((idx*size)/20) + 1
     this.movieSub = this.movieService.getTrendingMovies(this.selectedMovieTimeWindow, page).subscribe( (resp) => {
@@ -86,6 +111,12 @@ export class HomeComponent implements OnInit, OnDestroy {
     })
   }
 
+  /**
+   * Downloads, filters and refreshes the shown trending tv shows list depending on the given values
+   * @param idx The index of which page we are currently on
+   * @param size The amount of shows shown in the page
+   * @private
+   */
   private refreshShows(idx: number, size: number) {
     let page = ((idx*size)/20) + 1
     this.showSub = this.showService.getTrendingShows(this.selectedShowTimeWindow, page).subscribe( (resp) => {
@@ -105,10 +136,18 @@ export class HomeComponent implements OnInit, OnDestroy {
       this.showSub.unsubscribe()
   }
 
+  /**
+   * Called when the user changes the value of the trending shows time window select field
+   * Refreshes the trending shows
+   */
   showTimeWindowChanged() {
     this.refreshShows(this.currentShowPageIdx, this.currentShowPageSize)
   }
 
+  /**
+   * Called when the user changes the value of the trending movies time window select field
+   * Refreshes the trending movies
+   */
   movieTimeWindowChanged() {
     this.refreshMovies(this.currentMoviePageIdx, this.currentMoviePageSize)
   }

@@ -7,6 +7,9 @@ import {environment as env} from "../../../../environments/environment";
 import {PageEvent} from "@angular/material/paginator";
 import {Cast, ShowCredits} from "../../../../models/ShowCredits";
 
+/**
+ * A detailed view about a tv show. It also shows the cast members, the seasons and some recommended shows
+ */
 @Component({
   selector: 'app-show-details',
   templateUrl: './show-details.component.html',
@@ -49,10 +52,18 @@ export class ShowDetailsComponent implements OnInit, OnDestroy {
     })
   }
 
+  /**
+   * Called when the state of the seasons paginator changes
+   * @param event contains information about the state of the paginator
+   */
   onSeasonsPageEvent(event: PageEvent) {
     this.filterSeasons(event.pageIndex, event.pageSize)
   }
 
+  /**
+   * Called when the state of the cast members' paginator changes
+   * @param event contains information about the state of the paginator
+   */
   onCastPageEvent(event: PageEvent) {
     this.filterMainCast(event.pageIndex, event.pageSize)
   }

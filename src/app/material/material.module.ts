@@ -29,6 +29,9 @@ const MaterialComponents = [
   MatProgressSpinnerModule,
 ]
 
+/**
+ * A separate module for the angular-material imports
+ */
 @NgModule({
   imports: [
     MaterialComponents,

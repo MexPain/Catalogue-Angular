@@ -5,6 +5,9 @@ import {ShowService} from "../../../services/show.service";
 import {SeasonDetails} from "../../../../models/SeasonDetails";
 import {environment as env} from "../../../../environments/environment";
 
+/**
+ * A detailed view about a season of a tv show.
+ */
 @Component({
   selector: 'app-show-season-details',
   templateUrl: './show-season-details.component.html',
